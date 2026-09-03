@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Golden Spoon — 3 Michelin-starred fine dining restaurant. Indulge in artisanal culinary art, seasonal tasting menus, and rare vintage wine pairings.">
+  <meta name="theme-color" content="#141311">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="restaurant.restaurant">
+  <meta property="og:title" content="Golden Spoon — Fine Dining Restaurant">
+  <meta property="og:description" content="Experience award-winning gastronomy by Executive Chef Anthony Mercer.">
+  <meta property="og:image" content="resources/hero.jpg">
+  
+  <title>Golden Spoon — Fine Dining & Tasting Experience</title>
+
+  <link rel="icon" type="image/jpeg" href="resources/logo.jpg">
+  <link rel="apple-touch-icon" href="resources/logo.jpg">
+
+  <!-- Google Fonts Preconnect & Loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org Restaurant Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Golden Spoon",
+    "image": "resources/logo.jpg",
+    "servesCuisine": "Contemporary Fine Dining, Modern French",
+    "priceRange": "$$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "18 Turenne Avenue",
+      "addressLocality": "Central District",
+      "postalCode": "10001",
+      "addressCountry": "US"
+    },
+    "telephone": "+15550123456",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "18:00",
+        "closes": "23:30"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Screen reader announcement live region -->
+  <div id="a11yAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ===== SITE HEADER ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      <a href="#home" class="brand-link" data-screen="home" aria-label="Golden Spoon Home">
+        <img src="resources/logo.jpg" alt="Golden Spoon Emblem" class="brand-logo-img">
+        <div class="brand-text-wrap">
+          <span class="brand-est">EST. 1998 · FINE DINING</span>
+          <span class="brand-name">Golden Spoon</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <button class="nav-item active" data-screen="home">Home</button>
+        <button class="nav-item" data-screen="menu">Menu</button>
+        <button class="nav-item" data-screen="reserve">Reservation</button>
+        <button class="nav-item" data-screen="about">Our Story</button>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Order / Tasting Bag Icon Button -->
+        <button class="cart-trigger-btn" id="cartTriggerBtn" aria-label="View tasting bag" aria-haspopup="dialog">
+          <svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-badge" id="cartBadgeCount" aria-label="0 items in bag">0</span>
+        </button>
+
+        <!-- Mobile Drawer Toggle Button -->
+        <button class="menu-btn" id="menuBtn" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="drawer">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MOBILE NAVIGATION DRAWER ===== -->
+  <div class="drawer-backdrop" id="drawerBackdrop" tabindex="-1"></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Navigation Menu" aria-hidden="true">
+    <div class="drawer-head">
+      <div class="brand brand-with-logo">
+        <img src="resources/logo.jpg" alt="Golden Spoon Emblem" class="brand-logo-img">
+        <div>
+          <span class="brand-est">EST. 1998 · 3 MICHELIN STARS</span>
+          <h2 class="brand-name">Golden Spoon</h2>
+        </div>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Close navigation menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <p class="drawer-subtitle">18 Turenne Avenue, Central District</p>
+
+    <nav class="drawer-nav" aria-label="Mobile Menu Navigation">
+      <a href="#home" class="drawer-link active" data-screen="home">
+        <span class="drawer-link-text">Home Experience</span>
+        <span class="drawer-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="#menu" class="drawer-link" data-screen="menu">
+        <span class="drawer-link-text">Tasting & À La Carte Menu</span>
+        <span class="drawer-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="#reserve" class="drawer-link" data-screen="reserve">
+        <span class="drawer-link-text">Table Reservations</span>
+        <span class="drawer-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="#about" class="drawer-link" data-screen="about">
+        <span class="drawer-link-text">Our Heritage & Chef</span>
+        <span class="drawer-arrow" aria-hidden="true">→</span>
+      </a>
+    </nav>
+
+    <div class="drawer-cta-box">
+      <button class="btn btn-gold btn-block" data-screen="reserve">Book a Table</button>
+    </div>
+
+    <div class="drawer-footer">
+      <div class="drawer-info">
+        <p class="info-label">Dinner Hours</p>
+        <p class="drawer-hours">Tue – Sun · 6:00 PM – 11:30 PM</p>
+        <a href="tel:+15550123456" class="drawer-contact">+1 (555) 012-3456</a>
+        <a href="mailto:concierge@goldenspoon.com" class="drawer-contact">concierge@goldenspoon.com</a>
+      </div>
+      <div class="drawer-social">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">IG</a>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">FB</a>
+        <a href="https://michelin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Michelin Guide">★3</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT APPLICATION AREA ===== -->
+  <main id="mainContent" class="main-content">
+    
+    <!-- ========================================================
+         SCREEN 1: HOME SCREEN
+         ======================================================== -->
+    <section class="screen screen-home" id="screen-home" role="tabpanel" aria-label="Home Screen">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="michelin-star">★★★</span>
+            <span>Michelin Guide 2026</span>
+          </div>
+          <p class="eyebrow hero-eyebrow">A Symphony of Flavors</p>
+          <h1 class="hero-title">Where every plate <br><em>tells a story.</em></h1>
+          <p class="hero-description">Modern fine dining rooted in classical culinary traditions, crafted with rare seasonal harvests and poetic precision.</p>
+          <div class="hero-actions">
+            <button class="btn btn-gold" data-screen="reserve">Reserve Your Table</button>
+            <button class="btn btn-outline" data-screen="menu">Explore Menu</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Restaurant Highlight Bar -->
+      <section class="info-bar" aria-label="Key Information">
+        <div class="info-item">
+          <span class="info-icon" aria-hidden="true">⏱</span>
+          <h2 class="info-label">Dinner Service</h2>
+          <p class="info-value">Tue – Sun · 6:00 PM – 11:30 PM</p>
+        </div>
+        <div class="info-item">
+          <span class="info-icon" aria-hidden="true">📍</span>
+          <h2 class="info-label">Location</h2>
+          <p class="info-value">18 Turenne Avenue, Central District</p>
+        </div>
+        <div class="info-item">
+          <span class="info-icon" aria-hidden="true">👔</span>
+          <h2 class="info-label">Atmosphere</h2>
+          <p class="info-value">Elegant / Smart Casual</p>
+        </div>
+      </section>
+
+      <!-- Chef's Highlights / Signature Dishes -->
+      <section class="highlights-section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Curated Masterpieces</p>
+              <h2 class="section-title">Tonight's Chef Highlights</h2>
+            </div>
+            <button class="see-all-btn" data-screen="menu">
+              <span>View Full Menu</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <div class="dish-grid" id="homeHighlightsGrid">
+            <!-- Dynamically populated from dishes data in main.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Gastronomic Philosophy / Immersive Banner -->
+      <section class="philosophy-section">
+        <div class="container">
+          <div class="philosophy-card">
+            <div class="philosophy-text">
+              <p class="eyebrow">The Philosophy</p>
+              <h2 class="section-title">"Cooking is the art of translating raw passion into lasting memories."</h2>
+              <p class="philosophy-desc">Each evening, Executive Chef Anthony Mercer curates an 8-course gastronomic journey using organic heritage vegetables from our private biodynamic estate and sustainable Atlantic coastal fisheries.</p>
+              <div class="philosophy-stats">
+                <div class="stat-box">
+                  <span class="stat-number">28</span>
+                  <span class="stat-label">Years of Excellence</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-number">3</span>
+                  <span class="stat-label">Michelin Stars</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-number">120+</span>
+                  <span class="stat-label">Artisan Tea Reserves</span>
+                </div>
+              </div>
+            </div>
+            <div class="philosophy-image-wrap">
+              <img src="resources/philosophy.jpg" alt="Executive Chef Finishing Masterpiece" class="philosophy-img" loading="lazy">
+              <div class="img-badge">Fine Dining</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Critic Testimonial Carousel -->
+      <section class="testimonial-section" aria-label="Critical Acclaim">
+        <div class="container">
+          <div class="testimonial-slider" id="testimonialSlider">
+            <article class="testimonial-card active">
+              <div class="quote-mark" aria-hidden="true">“</div>
+              <blockquote class="testimonial-quote">"A temple of culinary mastery. The cherry-glazed duck breast and fresh sea bass alone justify a journey."</blockquote>
+              <div class="testimonial-meta">
+                <p class="testimonial-author">The Culinary Review</p>
+                <p class="testimonial-source">International Gastronomy Journal · ★★★ Michelin</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action Banner -->
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-inner">
+            <p class="eyebrow">Exclusive Seating</p>
+            <h2 class="cta-title">Indulge in an unforgettable evening.</h2>
+            <p class="cta-subtitle">Reservations are open up to 60 days in advance. Limited intimate seating available nightly.</p>
+            <div class="cta-actions">
+              <button class="btn btn-gold cta-btn" data-screen="reserve">Reserve Your Table Now</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ========================================================
+         SCREEN 2: MENU SCREEN (Categorized, Filterable, Interactive)
+         ======================================================== -->
+    <section class="screen screen-menu" id="screen-menu" role="tabpanel" aria-label="Menu Screen" hidden>
+      <header class="menu-hero-header">
+        <div class="container">
+          <p class="eyebrow">Culinary Repertoire</p>
+          <h1 class="page-title">The Grand Seasonal Menu</h1>
+          <p class="page-subtitle">Curated with precision, balancing timeless culinary heritage with modern artistry.</p>
+
+          <!-- Search & Filter Controls -->
+          <div class="menu-controls">
+            <!-- Search bar -->
+            <div class="search-wrap">
+              <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="search" id="menuSearchInput" class="menu-search-input" placeholder="Search dishes, ingredients, pairings..." aria-label="Search dishes">
+              <button id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search" hidden>✕</button>
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div class="category-tabs" role="tablist" aria-label="Menu Categories" id="categoryTabs">
+              <button class="cat-pill active" role="tab" aria-selected="true" data-category="all">All Dishes</button>
+              <button class="cat-pill" role="tab" aria-selected="false" data-category="starters">Appetizers & Starters</button>
+              <button class="cat-pill" role="tab" aria-selected="false" data-category="mains">Main Courses</button>
+              <button class="cat-pill" role="tab" aria-selected="false" data-category="desserts">Desserts</button>
+              <button class="cat-pill" role="tab" aria-selected="false" data-category="sommelier">Zero-Proof Botanical Bar</button>
+            </div>
+
+            <!-- Dietary Quick Filter Chips -->
+            <div class="dietary-filter-bar">
+              <span class="filter-label">Dietary:</span>
+              <button class="diet-chip" data-diet="all" aria-pressed="true">Any</button>
+              <button class="diet-chip" data-diet="gf" aria-pressed="false">Gluten Free</button>
+              <button class="diet-chip" data-diet="vegan" aria-pressed="false">Plant-Based / Vegan</button>
+              <button class="diet-chip" data-diet="chef" aria-pressed="false">Chef's Signature ★</button>
+              <button class="diet-chip" data-diet="pairing" aria-pressed="false">With Botanical Pairing</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Menu Items Grid Container -->
+      <section class="menu-list-section">
+        <div class="container">
+          <!-- Active filter status & count -->
+          <div class="menu-status-bar">
+            <span id="menuCountText" class="menu-count-text">Showing 8 creations</span>
+            <span class="menu-note">All dishes prepared to order · Zero-proof botanical pairings available</span>
+          </div>
+
+          <!-- Empty search result fallback -->
+          <div id="noResultsBox" class="no-results-box" hidden>
+            <p class="no-results-emoji">🍽️</p>
+            <h3 class="no-results-title">No dishes found</h3>
+            <p class="no-results-text">We could not find any dishes matching your search. Try another keyword or reset filters.</p>
+            <button class="btn btn-outline" id="resetFiltersBtn">Reset All Filters</button>
+          </div>
+
+          <!-- Menu items output -->
+          <div class="menu-grid" id="fullMenuGrid" role="list">
+            <!-- Rendered dynamically by main.js -->
+          </div>
+
+          <!-- Tasting Menu Signature Box -->
+          <div class="tasting-experience-card">
+            <div class="tasting-info">
+              <span class="eyebrow">The Ultimate Experience</span>
+              <h2 class="tasting-title">The Grand Tasting Experience (8-Course Menu)</h2>
+              <p class="tasting-desc">A blind sensory journey curated daily by Chef Anthony Mercer. Includes tableside finishings, caviar service, and an optional artisan cold-drip sparkling tea and botanical infusion pairing.</p>
+              <ul class="tasting-perks">
+                <li>✦ 8 Exquisite Courses with Chef's welcome starter</li>
+                <li>✦ Artisan cultured butter & fresh sourdough bread service</li>
+                <li>✦ Handcrafted sweet treats and organic herbal tea infusion</li>
+              </ul>
+            </div>
+            <div class="tasting-price-box">
+              <span class="tasting-price">CA$245</span>
+              <span class="tasting-unit">per guest (Botanical pairing +CA$95)</span>
+              <button class="btn btn-gold btn-block add-tasting-btn" id="addTastingBtn">Add Tasting Experience</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ========================================================
+         SCREEN 3: RESERVATION SCREEN (Multi-step & Live Validation)
+         ======================================================== -->
+    <section class="screen screen-reserve" id="screen-reserve" role="tabpanel" aria-label="Reservations Screen" hidden>
+      <header class="reserve-hero">
+        <div class="container">
+          <p class="eyebrow">Intimate Tables</p>
+          <h1 class="page-title">Table Reservations</h1>
+          <p class="page-subtitle">Reserve your fine dining evening. Complimentary sommelier consultation included with every booking.</p>
+        </div>
+      </header>
+
+      <section class="reserve-body">
+        <div class="container">
+          <form id="reservationForm" class="reserve-form" novalidate>
+            <!-- Step 1: Party Size -->
+            <fieldset class="reserve-block">
+              <legend class="reserve-label">
+                <span class="step-num">1</span>
+                <span>Select Number of Guests</span>
+              </legend>
+              <div class="guest-counter-wrapper">
+                <div class="guest-counter" role="group" aria-label="Guest count selector">
+                  <button type="button" class="counter-btn" id="guestMinus" aria-label="Decrease party size">−</button>
+                  <span class="guest-count" id="guestCount" aria-live="polite">2</span>
+                  <button type="button" class="counter-btn" id="guestPlus" aria-label="Increase party size">+</button>
+                </div>
+                <div class="guest-meta">
+                  <p class="reserve-hint">Parties of 1 to 8 guests can be booked online.</p>
+                  <p class="reserve-hint-small">For private dining room events (9+ guests), please contact our private concierge.</p>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Step 2: Date Selector -->
+            <fieldset class="reserve-block">
+              <legend class="reserve-label">
+                <span class="step-num">2</span>
+                <span>Select Evening Date</span>
+              </legend>
+              <div class="date-picker-container">
+                <div class="quick-dates" id="quickDatesContainer">
+                  <!-- Generated dynamically for next 7 days -->
+                </div>
+                <div class="custom-date-row">
+                  <label for="customDatePicker" class="custom-date-label">Or choose a specific date:</label>
+                  <input type="date" id="customDatePicker" class="custom-date-input" aria-label="Choose reservation date">
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Step 3: Time Slot -->
+            <fieldset class="reserve-block">
+              <legend class="reserve-label">
+                <span class="step-num">3</span>
+                <span>Select Seating Time</span>
+              </legend>
+              <div class="time-shift-tabs">
+                <span class="shift-title">Dinner Shift</span>
+              </div>
+              <div class="time-slots" id="timeSlotsContainer" role="radiogroup" aria-label="Dinner seating times">
+                <button type="button" class="time-slot" data-time="18:00" role="radio" aria-checked="false">
+                  <span class="slot-time">6:00 PM</span>
+                  <span class="slot-status">Available</span>
+                </button>
+                <button type="button" class="time-slot" data-time="18:30" role="radio" aria-checked="false">
+                  <span class="slot-time">6:30 PM</span>
+                  <span class="slot-status">Available</span>
+                </button>
+                <button type="button" class="time-slot" data-time="19:00" role="radio" aria-checked="false">
+                  <span class="slot-time">7:00 PM</span>
+                  <span class="slot-status badge-peak">Popular</span>
+                </button>
+                <button type="button" class="time-slot selected" data-time="19:30" role="radio" aria-checked="true">
+                  <span class="slot-time">7:30 PM</span>
+                  <span class="slot-status badge-peak">Chef Choice</span>
+                </button>
+                <button type="button" class="time-slot" data-time="20:00" role="radio" aria-checked="false">
+                  <span class="slot-time">8:00 PM</span>
+                  <span class="slot-status badge-peak">Popular</span>
+                </button>
+                <button type="button" class="time-slot" data-time="20:30" role="radio" aria-checked="false">
+                  <span class="slot-time">8:30 PM</span>
+                  <span class="slot-status">Available</span>
+                </button>
+                <button type="button" class="time-slot" data-time="21:15" role="radio" aria-checked="false">
+                  <span class="slot-time">9:15 PM</span>
+                  <span class="slot-status">Late Seating</span>
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Step 4: Seating Zone & Ambience -->
+            <fieldset class="reserve-block">
+              <legend class="reserve-label">
+                <span class="step-num">4</span>
+                <span>Seating Atmosphere</span>
+              </legend>
+              <div class="seating-options" id="seatingOptions">
+                <label class="seating-radio-card selected">
+                  <input type="radio" name="seatingZone" value="Main Salon" checked>
+                  <div class="card-content">
+                    <span class="card-title">Grand Dining Salon</span>
+                    <span class="card-desc">Warm chandelier lighting, intimate acoustics, and garden view.</span>
+                  </div>
+                </label>
+                <label class="seating-radio-card">
+                  <input type="radio" name="seatingZone" value="Chef Counter">
+                  <div class="card-content">
+                    <span class="card-title">Chef's Culinary Counter</span>
+                    <span class="card-desc">Front-row view of the brigade plating with direct chef interaction.</span>
+                  </div>
+                </label>
+                <label class="seating-radio-card">
+                  <input type="radio" name="seatingZone" value="Private Cellar">
+                  <div class="card-content">
+                    <span class="card-title">Botanical Tea & Herb Conservatory</span>
+                    <span class="card-desc">Surrounded by artisanal cold-brew tea towers, rare herbs, and private garden views.</span>
+                  </div>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Step 5: Occasion & Special Requests -->
+            <fieldset class="reserve-block">
+              <legend class="reserve-label">
+                <span class="step-num">5</span>
+                <span>Occasion & Dietary Notes <span class="optional">(Optional)</span></span>
+              </legend>
+              <div class="chips" id="occasionChips" role="group" aria-label="Occasion options">
+                <button type="button" class="chip" data-occasion="Anniversary">✨ Anniversary</button>
+                <button type="button" class="chip" data-occasion="Birthday">🎂 Birthday Celebration</button>
+                <button type="button" class="chip" data-occasion="Date Night">🌹 Romantic Evening</button>
+                <button type="button" class="chip" data-occasion="Business">💼 Executive Dinner</button>
+                <button type="button" class="chip" data-occasion="Celebration">🥂 Milestone</button>
+              </div>
+
+              <div class="form-row-full" style="margin-top: 1.25rem;">
+                <label for="dietaryNotes" class="field-label">Allergies or Dietary Preferences</label>
+                <input type="text" id="dietaryNotes" class="input-field" placeholder="e.g. Shellfish allergy, Pescatarian, Gluten sensitive..." maxlength="120">
+              </div>
+            </fieldset>
+
+            <!-- Step 6: Guest Contact Information -->
+            <fieldset class="reserve-block">
+              <legend class="reserve-label">
+                <span class="step-num">6</span>
+                <span>Contact Details</span>
+              </legend>
+              <div class="contact-grid">
+                <div class="form-group">
+                  <label for="guestName" class="field-label">Full Name <span class="req">*</span></label>
+                  <input type="text" id="guestName" class="input-field" placeholder="e.g. Alexander Wright" required autocomplete="name">
+                  <span class="error-msg" id="nameError">Please enter your full name.</span>
+                </div>
+                <div class="form-group">
+                  <label for="guestEmail" class="field-label">Email Address <span class="req">*</span></label>
+                  <input type="email" id="guestEmail" class="input-field" placeholder="e.g. a.wright@domain.com" required autocomplete="email">
+                  <span class="error-msg" id="emailError">Please enter a valid email address.</span>
+                </div>
+                <div class="form-group">
+                  <label for="guestPhone" class="field-label">Phone Number <span class="req">*</span></label>
+                  <input type="tel" id="guestPhone" class="input-field" placeholder="e.g. +1 (555) 234-5678" required autocomplete="tel">
+                  <span class="error-msg" id="phoneError">Please provide a valid contact number.</span>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Reservation Summary & Confirmation Action -->
+            <section class="reserve-confirm-box">
+              <div class="summary-card">
+                <div class="summary-head">
+                  <h3 class="summary-title">Booking Overview</h3>
+                  <span class="summary-status-badge">No Prepayment Required</span>
+                </div>
+                <p class="reserve-summary-line" id="reserveSummary">2 Guests · Today · 7:30 PM · Grand Dining Salon</p>
+                <p class="cancellation-policy">✦ Free cancellation up to 6 hours prior to your seating. A confirmation SMS & email will be sent immediately.</p>
+              </div>
+
+              <button type="submit" class="btn btn-gold btn-block confirm-btn" id="confirmBtn">
+                <span>Confirm My Reservation</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </button>
+            </section>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <!-- ========================================================
+         SCREEN 4: ABOUT US & STORY SCREEN
+         ======================================================== -->
+    <section class="screen screen-about" id="screen-about" role="tabpanel" aria-label="About Us Screen" hidden>
+      <header class="about-hero">
+        <div class="container">
+          <p class="eyebrow">Our Heritage</p>
+          <h1 class="page-title">The Art of Golden Spoon</h1>
+          <p class="page-subtitle">Founded in 1998, celebrating over a quarter-century of uncompromising culinary mastery and hospitality.</p>
+        </div>
+      </header>
+
+      <div class="container">
+        <!-- Story Section -->
+        <article class="story-block">
+          <div class="story-grid">
+            <div class="story-image-col">
+              <img src="resources/story.jpg" alt="Dining room interior at Golden Spoon" class="story-img" loading="lazy">
+              <div class="caption">The Grand Dining Hall at Golden Spoon</div>
+            </div>
+            <div class="story-text-col">
+              <p class="eyebrow">The Story</p>
+              <h2 class="section-title">A Heritage of Passion & Mastery</h2>
+              <p class="story-para">Golden Spoon began with a singular vision: to remove culinary pretension while elevating flavor, texture, and visual storytelling to its highest possible aesthetic form.</p>
+              <p class="story-para">Under the leadership of Executive Chef Anthony Mercer, our kitchen works in close partnership with organic heritage farmers, coastal fishermen, and artisan cheese makers to ensure every ingredient arrives at peak flavor.</p>
+              <div class="chef-signature">
+                <div class="chef-avatar-box">
+                  <span class="chef-initials">AM</span>
+                </div>
+                <div>
+                  <h4 class="chef-name">Anthony Mercer</h4>
+                  <p class="chef-role">Executive Chef & Founder · 3 Michelin Stars</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Culinary Pillars -->
+        <section class="pillars-section">
+          <div class="section-head text-center">
+            <p class="eyebrow">Our Standards</p>
+            <h2 class="section-title">The Pillars of Our Gastronomy</h2>
+          </div>
+          <div class="pillars-grid">
+            <div class="pillar-card">
+              <div class="pillar-icon">🌱</div>
+              <h3 class="pillar-title">Hyper-Seasonal</h3>
+              <p class="pillar-desc">Menus evolve weekly alongside regional micro-climates and harvest cycles from our private organic farm estate.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-icon">🍃</div>
+              <h3 class="pillar-title">Curated Tea Cellar</h3>
+              <p class="pillar-desc">Over 120 rare single-estate whole leaf teas and cold-extracted botanical infusions stored in optimal climate vaults.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-icon">✨</div>
+              <h3 class="pillar-title">Flawless Service</h3>
+              <p class="pillar-desc">Discreet, anticipatory hospitality that puts guest comfort, warmth, and intimacy at the center of the evening.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Location, Map & Practical Information -->
+        <section class="location-section">
+          <div class="location-card">
+            <div class="location-info">
+              <p class="eyebrow">Find Us</p>
+              <h2 class="section-title">Visiting Golden Spoon</h2>
+              <div class="info-group">
+                <h4 class="info-subhead">Address</h4>
+                <p class="info-text">18 Turenne Avenue, Central District<br><span class="highlight-text">Transit: Central Metro Station or Line 8 Express</span></p>
+              </div>
+              <div class="info-group">
+                <h4 class="info-subhead">Valet & Accessibility</h4>
+                <p class="info-text">Complimentary private valet parking available at our main entrance. Step-free wheelchair accessibility throughout all dining salons.</p>
+              </div>
+              <div class="info-group">
+                <h4 class="info-subhead">Dress Code</h4>
+                <p class="info-text">Smart Elegant. Jackets recommended; athletic wear and flip-flops are not permitted.</p>
+              </div>
+              <div class="location-actions">
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Open in Maps ↗</a>
+                <button class="btn btn-gold" data-screen="reserve">Book Table</button>
+              </div>
+            </div>
+            <div class="map-interactive-mock">
+              <div class="map-header">
+                <span>📍 Central District, Downtown</span>
+              </div>
+              <div class="map-visual">
+                <div class="map-pin">
+                  <span class="pin-pulse"></span>
+                  <span class="pin-icon">🥄</span>
+                  <span class="pin-label">Golden Spoon</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ Accordion -->
+        <section class="faq-section">
+          <div class="section-head text-center">
+            <p class="eyebrow">Inquiries</p>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+          </div>
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>Can you accommodate severe dietary restrictions or allergies?</span>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-content" hidden>
+                <p>Yes. With at least 24 hours notice, our kitchen team will gladly customize our tasting menu for vegetarian, pescatarian, gluten-free, or specific allergen needs.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>Do you accommodate celebration cakes or custom tea pairings?</span>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-content" hidden>
+                <p>Yes. Our pastry brigade crafts custom celebratory desserts upon advance notice, and our Master Tea Sommelier provides personalized botanical pairing consultations for special events.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span>Is there a waiting list for fully booked evenings?</span>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-content" hidden>
+                <p>Yes. If your preferred time slot is unavailable, you can join our online waitlist or select an alternative date. We also release two tables daily at 12:00 PM for same-day reservations.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== TASTING BAG / ORDER TRAY SLIDE-OVER (Dialog) ===== -->
+  <dialog id="cartModal" class="cart-modal" aria-labelledby="cartTitle">
+    <div class="cart-modal-container">
+      <div class="cart-head">
+        <div class="cart-head-title">
+          <h2 id="cartTitle" class="cart-title">Your Tasting Bag</h2>
+          <span class="cart-subtitle" id="cartItemCountSubtitle">0 items</span>
+        </div>
+        <button class="modal-close-btn" id="cartCloseBtn" aria-label="Close tasting bag">✕</button>
+      </div>
+
+      <div class="cart-body" id="cartBody">
+        <!-- Rendered dynamically -->
+        <div class="empty-cart-state" id="emptyCartState">
+          <span class="empty-cart-icon">🍽️</span>
+          <p class="empty-cart-title">Your bag is currently empty</p>
+          <p class="empty-cart-desc">Add signature dishes or the tasting menu to curate your evening selections.</p>
+          <button class="btn btn-outline" id="exploreMenuFromCartBtn">Browse Our Menu</button>
+        </div>
+        <div class="cart-items-list" id="cartItemsList"></div>
+      </div>
+
+      <div class="cart-footer" id="cartFooter" hidden>
+        <div class="cart-cost-row">
+          <span>Estimated Subtotal (CAD)</span>
+          <span class="cart-total-price" id="cartTotalPrice">CA$0.00</span>
+        </div>
+        <p class="cart-tax-note">Includes service and taxes. Payment is completed at the end of your dining experience.</p>
+        <div class="cart-actions">
+          <button class="btn btn-gold btn-block" id="proceedToReserveBtn">Proceed to Table Booking</button>
+          <button class="btn-clear-cart" id="clearCartBtn">Clear Bag</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===== DISH DETAIL MODAL (Dialog) ===== -->
+  <dialog id="dishDetailModal" class="dish-modal" aria-labelledby="modalDishName">
+    <div class="dish-modal-content">
+      <button class="modal-close-btn absolute-close" id="dishModalCloseBtn" aria-label="Close details">✕</button>
+      <div class="dish-modal-media">
+        <img id="modalDishImg" src="resources/duck.jpg" alt="Dish image" class="dish-modal-img">
+        <div class="modal-badges" id="modalBadges"></div>
+      </div>
+      <div class="dish-modal-info">
+        <div class="modal-dish-header">
+          <div>
+            <span class="eyebrow" id="modalDishCategory">Main Course</span>
+            <h2 id="modalDishName" class="modal-dish-title">Seared Duck Breast</h2>
+          </div>
+          <span class="modal-dish-price" id="modalDishPrice">CA$42</span>
+        </div>
+
+        <p class="modal-dish-desc" id="modalDishDesc">Crisp duck breast glazed with sweet cherries, charred endive, smoked sea salt, and lavender blossom honey.</p>
+
+        <div class="modal-pairing-box" id="modalPairingBox">
+          <span class="pairing-icon">🍷</span>
+          <div>
+            <h4 class="pairing-title">Sommelier's Wine Pairing</h4>
+            <p class="pairing-text" id="modalPairingText">Domaine Dujac Pinot Noir Reserve 2018</p>
+          </div>
+        </div>
+
+        <div class="modal-meta-row">
+          <div class="meta-item">
+            <span class="meta-label">Origin</span>
+            <span class="meta-val" id="modalOrigin">Organic Farm Estate</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Allergens</span>
+            <span class="meta-val" id="modalAllergens">None</span>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-gold btn-block" id="modalAddBtn">Add to Tasting Bag</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===== RESERVATION CONFIRMATION SUCCESS MODAL ===== -->
+  <dialog id="bookingSuccessModal" class="booking-success-modal" aria-labelledby="successTitle">
+    <div class="success-card">
+      <div class="success-icon-badge">✓</div>
+      <p class="eyebrow">Reservation Confirmed</p>
+      <h2 id="successTitle" class="success-title">We Await Your Arrival</h2>
+      <p class="success-text">A formal invitation with your confirmation number has been generated.</p>
+
+      <div class="ticket-card" id="ticketCard">
+        <div class="ticket-header">
+          <div class="ticket-brand-wrap">
+            <img src="resources/logo.jpg" alt="Golden Spoon Logo" class="ticket-logo-img">
+            <span class="ticket-brand">Golden Spoon</span>
+          </div>
+          <span class="ticket-code" id="ticketCode">#GS-9821</span>
+        </div>
+        <div class="ticket-body">
+          <div class="ticket-field">
+            <span class="ticket-label">Guest</span>
+            <span class="ticket-value" id="ticketName">Alexander Wright</span>
+          </div>
+          <div class="ticket-field">
+            <span class="ticket-label">Party</span>
+            <span class="ticket-value" id="ticketParty">2 Guests</span>
+          </div>
+          <div class="ticket-field">
+            <span class="ticket-label">Date & Time</span>
+            <span class="ticket-value" id="ticketDateTime">Tonight at 7:30 PM</span>
+          </div>
+          <div class="ticket-field">
+            <span class="ticket-label">Atmosphere</span>
+            <span class="ticket-value" id="ticketSeating">Grand Dining Salon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="success-actions">
+        <button class="btn btn-gold btn-block" id="successDoneBtn">Return to Home</button>
+        <button class="btn btn-outline btn-block" id="calendarExportBtn">📅 Add to Calendar (.ics)</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===== TOAST NOTIFICATION CONTAINER ===== -->
+  <div class="toast-container" id="toastContainer" aria-live="assertive"></div>
+
+  <!-- ===== MOBILE BOTTOM APP NAVIGATION BAR ===== -->
+  <nav class="tab-bar" aria-label="Quick Mobile Tab Navigation">
+    <button class="tab-btn active" data-screen="home" aria-label="Go to Home screen">
+      <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span class="tab-label">Home</span>
+    </button>
+    <button class="tab-btn" data-screen="menu" aria-label="Go to Menu screen">
+      <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+        <line x1="6" y1="6" x2="6" y2="4"></line>
+        <line x1="10" y1="1" x2="10" y2="4"></line>
+        <line x1="14" y1="1" x2="14" y2="4"></line>
+      </svg>
+      <span class="tab-label">Menu</span>
+    </button>
+    <button class="tab-btn" data-screen="reserve" aria-label="Go to Reservation screen">
+      <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      <span class="tab-label">Reserve</span>
+    </button>
+    <button class="tab-btn" data-screen="about" aria-label="Go to About Story screen">
+      <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="16" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+      </svg>
+      <span class="tab-label">About</span>
+    </button>
+  </nav>
+
+  <!-- JavaScript Module -->
+  <script src="js/main.js"></script>
+</body>
+</html>
